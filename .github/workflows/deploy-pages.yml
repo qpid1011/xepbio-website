@@ -1,0 +1,45 @@
+name: Deploy Xepbio Official Website to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Stage clean public site bundle (Strict Explicit File Whitelist)
+        run: |
+          mkdir -p _site/assets
+          cp index.html index_en.html 404.html CNAME .nojekyll robots.txt sitemap.xml styles.css script.js favicon.ico favicon-light.ico favicon-dark.ico _site/
+          for asset in bbb_shuttle.png hero_orb.png logo.png marine_upcycling.mp4 marine_upcycling.png md_simulation_preview.png wave_exosome.mp4 wave_exosome.png zephyrus.mp4 zephyrus.png; do
+            cp "assets/$asset" "_site/assets/$asset"
+          done
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

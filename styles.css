@@ -1,0 +1,215 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom selection */
+::selection {
+    background: #00F2FE;
+    color: #060B19;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #060B19;
+}
+::-webkit-scrollbar-thumb {
+    background: #111C3A;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00F2FE;
+}
+
+/* BBB Passing Animation Logic */
+.pass-animation {
+    animation: moveCross 4.5s infinite cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+@keyframes moveCross {
+    0% { transform: translateX(-50px) scale(0.8); background-color: rgba(229,229,229,0.1); border-color: rgba(229,229,229,0.3); opacity: 0; }
+    30% { transform: translateX(50px) scale(1); background-color: rgba(229,229,229,0.2); opacity: 1; border-color: rgba(229,229,229,0.5); }
+    50% { transform: translateX(180px) scale(1.1); background-color: rgba(0, 242, 254, 0.4); border-color: #00F2FE; box-shadow: 0 0 20px rgba(0, 242, 254, 0.8); color: white; }
+    80% { transform: translateX(350px) scale(1); background-color: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); opacity: 1; }
+    100% { transform: translateX(450px) scale(0.8); opacity: 0; border-color: transparent; }
+}
+
+/* Markdown formatting inside chat */
+.prose strong {
+    font-weight: 600;
+    color: #fff;
+    border-bottom: 1px solid rgba(0,242,254,0.3);
+}
+.prose ul {
+    list-style: disc;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Scanning scan animation keyframes */
+@keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Theme Toggle Pill */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #F8F9FA;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle-btn:hover {
+    border-color: rgba(0, 242, 254, 0.5);
+    color: #00F2FE;
+}
+
+.badge-new {
+    background-color: #d9f99d;
+    color: #1a2e05;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   High-Contrast Light Theme (html.light-theme / body.light-theme)
+   Zero Invisible Pastel Text Compliance
+   ========================================================================== */
+html.light-theme body,
+body.light-theme {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+html.light-theme ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+html.light-theme ::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+}
+html.light-theme ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+}
+
+html.light-theme #navbar {
+    background-color: rgba(248, 250, 252, 0.92) !important;
+    border-bottom-color: #e2e8f0 !important;
+}
+html.light-theme #navbar a:not(.text-cyan) {
+    color: #1e293b;
+}
+html.light-theme #navbar a:hover {
+    color: #0369a1 !important;
+}
+html.light-theme #navbar img[alt="Xepbio"] {
+    filter: brightness(0) saturate(100%) !important;
+}
+
+html.light-theme .theme-toggle-btn {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+html.light-theme .theme-toggle-btn:hover {
+    border-color: #0284c7;
+    color: #0369a1;
+}
+
+html.light-theme #mobile-menu {
+    background-color: rgba(248, 250, 252, 0.98) !important;
+}
+html.light-theme #menu-toggle {
+    color: #0f172a !important;
+}
+
+html.light-theme .bg-navy-900 {
+    background-color: #f8fafc !important;
+}
+html.light-theme .bg-navy-800 {
+    background-color: #ffffff !important;
+}
+html.light-theme #brand-story > div.absolute.inset-0 {
+    background: radial-gradient(ellipse at center, #eff6ff 0%, #f8fafc 70%, #f8fafc 100%) !important;
+}
+
+html.light-theme .text-silver-100,
+html.light-theme h1,
+html.light-theme h3,
+html.light-theme h4:not(.esg-video-title) {
+    color: #0f172a !important;
+}
+html.light-theme .text-silver-300 {
+    color: #1e293b !important;
+}
+html.light-theme .text-silver-500 {
+    color: #334155 !important;
+}
+html.light-theme footer .text-silver-500\/50,
+html.light-theme footer {
+    color: #475569 !important;
+    background-color: #f1f5f9 !important;
+    border-top-color: #e2e8f0 !important;
+}
+
+html.light-theme .text-cyan,
+html.light-theme .group:hover .group-hover\:text-cyan {
+    color: #0369a1 !important;
+}
+html.light-theme .bg-cyan\/5,
+html.light-theme .bg-cyan\/10 {
+    background-color: #e0f2fe !important;
+}
+html.light-theme .border-cyan\/30,
+html.light-theme .border-cyan\/20 {
+    border-color: #7dd3fc !important;
+}
+html.light-theme .border-white\/5,
+html.light-theme .border-white\/10 {
+    border-color: #cbd5e1 !important;
+}
+html.light-theme .bg-white\/5 {
+    background-color: #f1f5f9 !important;
+}
+html.light-theme .text-white\/30 {
+    color: #94a3b8 !important;
+}
+
+html.light-theme #hero h1 span.bg-clip-text {
+    background-image: linear-gradient(to right, #0f172a, #0369a1, #0284c7) !important;
+}
+html.light-theme #hero-orb {
+    background-color: #060B19;
+    box-shadow: 0 20px 50px rgba(3, 105, 161, 0.22) !important;
+}
+html.light-theme #hero-orb img {
+    mix-blend-mode: normal !important;
+}
+html.light-theme #the-key .bg-navy-900\/80 {
+    background-color: rgba(15, 23, 42, 0.86) !important;
+    color: #38bdf8 !important;
+}
+html.light-theme #impact .esg-video-badge {
+    background-color: #d9f99d !important;
+    color: #1a2e05 !important;
+}
+html.light-theme #impact .esg-video-title {
+    color: #ffffff !important;
+}
+html.light-theme .prose strong {
+    color: #0f172a;
+    border-bottom-color: rgba(3, 105, 161, 0.35);
+}

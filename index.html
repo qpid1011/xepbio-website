@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <!-- Language & Theme Auto-Detection -->
+    <script>
+        (function() {
+            if (localStorage.getItem('xepbio-theme') === 'light') {
+                document.documentElement.classList.add('light-theme');
+            }
+            const langChoice = sessionStorage.getItem('xepbio-lang');
+            if (!langChoice) {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang && !userLang.startsWith('ko')) {
+                    sessionStorage.setItem('xepbio-lang', 'en');
+                    window.location.replace('index_en.html');
+                }
+            }
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.xepbio.com/index.html" />
+    <link rel="alternate" hreflang="ko" href="https://www.xepbio.com/index.html" />
+    <link rel="alternate" hreflang="en" href="https://www.xepbio.com/index_en.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.xepbio.com/index.html" />
+    <title>젭바이오 (Xepbio) | 차세대 뇌혈관장벽(BBB) 투과 엑소좀 플랫폼</title>
+    <link rel="icon" href="favicon-light.ico?v=1.0" type="image/x-icon" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="favicon-dark.ico?v=1.0" type="image/x-icon" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="제주 바다의 생명력과 경희대 R&D로 완성한 압도적 가성비의 BBB 투과 약물 전달 플랫폼. 해양 업사이클링을 통한 ESG 경영.">
+    <!-- 기본 SEO 태그 및 Open Graph 키워드 -->
+    <meta name="keywords" content="젭바이오, Xepbio, 뇌혈관장벽, BBB, 엑소좀, 약물전달, ESG, 해양업사이클링">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="젭바이오 (Xepbio) | 차세대 BBB 투과 엑소좀">
+    <meta property="og:description" content="버려지는 어창수 업사이클링 기반. 생산 단가를 1/10로 낮추고 효능을 극대화한 BBB 투과 약물 전달 플랫폼.">
+    <meta property="og:image" content="https://www.xepbio.com/assets/logo.png">
+    
+    <!-- 구글 검색 엔진을 위한 구조화된 데이터(JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "XEPBIO",
+      "alternateName": "젭바이오",
+      "url": "https://www.xepbio.com",
+      "logo": "https://www.xepbio.com/assets/logo.png"
+    }
+    </script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                900: '#060B19',
+                800: '#0A1229',
+                700: '#111C3A'
+              },
+              silver: {
+                100: '#F8F9FA',
+                300: '#E5E5E5',
+                500: '#A1A1AA'
+              },
+              cyan: '#00F2FE'
+            },
+            fontFamily: {
+              sans: ['Pretendard', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="styles.css?v=4.0">
+</head>
+<body class="bg-navy-900 text-silver-100 font-sans overflow-x-hidden selection:bg-cyan selection:text-navy-900">
+    <!-- Starry Background -->
+    <div id="stars-container" class="fixed inset-0 z-0 pointer-events-none opacity-50"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        <a href="#hero" class="z-50">
+            <img src="assets/logo.png?v=8.0" alt="Xepbio" class="h-12 md:h-16 filter drop-shadow-[0_0_15px_rgba(0,242,255,0.3)] transition-all duration-300">
+        </a>
+        <div class="hidden md:flex items-center space-x-8 text-sm tracking-widest uppercase font-medium">
+            <a href="#brand-story" class="hover:text-cyan transition-colors">Brand Story</a>
+            <a href="#the-key" class="hover:text-cyan transition-colors">The Key</a>
+            <a href="#in-silico" class="hover:text-cyan transition-colors">In-silico</a>
+            <a href="#pipeline" class="hover:text-cyan transition-colors">Platform</a>
+            <a href="#impact" class="hover:text-cyan transition-colors">Impact</a>
+            <a href="#newsroom" class="hover:text-cyan transition-colors">Newsroom</a>
+            <div class="flex items-center space-x-2 border-l border-white/10 pl-6 h-4">
+                <span class="text-cyan font-bold">KO</span>
+                <span class="text-white/30 text-xs">|</span>
+                <a href="index_en.html" onclick="sessionStorage.setItem('xepbio-lang', 'en')" class="text-silver-500 hover:text-cyan transition-colors">EN</a>
+            </div>
+            <button id="theme-toggle" type="button" class="theme-toggle-btn js-theme-toggle" aria-label="밝은 테마로 전환">☀️ 밝은 테마</button>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="block md:hidden text-silver-100 hover:text-cyan focus:outline-none z-50" aria-label="메뉴 열기">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-navy-900/95 backdrop-blur-lg z-40 translate-x-full transition-transform duration-300 flex flex-col justify-start items-center pt-28 pb-12 overflow-y-auto space-y-8 text-xl tracking-widest uppercase font-medium md:hidden">
+        <a href="#brand-story" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">Brand Story</a>
+        <a href="#the-key" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">The Key</a>
+        <a href="#in-silico" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">In-silico</a>
+        <a href="#pipeline" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">Platform</a>
+        <a href="#impact" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">Impact</a>
+        <a href="#newsroom" class="mobile-link block w-full text-center text-silver-100 hover:text-cyan transition-colors">Newsroom</a>
+        <div class="flex items-center justify-center space-x-4 pt-6 border-t border-white/10 w-1/3">
+            <span class="text-cyan font-bold text-base">KO</span>
+            <span class="text-white/30 text-base">|</span>
+            <a href="index_en.html" onclick="sessionStorage.setItem('xepbio-lang', 'en')" class="text-silver-500 hover:text-cyan transition-colors text-base">EN</a>
+        </div>
+        <button id="theme-toggle-mobile" type="button" class="theme-toggle-btn js-theme-toggle" aria-label="밝은 테마로 전환">☀️ 밝은 테마</button>
+    </div>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-start md:justify-center items-center text-center px-4 pt-28 md:pt-0 relative">
+            <div class="absolute w-[600px] h-[600px] bg-cyan/10 rounded-full blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 z-0"></div>
+            
+            <div class="z-10 space-y-6 max-w-4xl pt-4 md:pt-20">
+                <div class="gsap-hero text-cyan text-sm tracking-[0.2em] font-semibold border border-cyan/30 bg-cyan/5 px-4 py-1.5 rounded-full inline-block mb-4">NEXT-GEN BBB DELIVERY</div>
+                <h1 class="gsap-hero text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    뇌질환 치료의 한계를 넘는<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-silver-100 via-cyan to-cyan">궁극의 패러다임</span>
+                </h1>
+                <p class="gsap-hero text-lg md:text-xl text-silver-500 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                    젭바이오는 버려지는 해양 자원을 업사이클링한 천연 엑소좀과 독보적인 Mfsd2a 셔틀 기술을 결합하여, 단 한 번도 정복되지 않았던 뇌혈관장벽(BBB) 너머로 생명의 희망을 능동적으로 전달합니다.
+                </p>
+            </div>
+            
+            <!-- Floating element -->
+            <div id="hero-orb" class="absolute bottom-10 right-10 md:right-32 w-48 h-48 md:w-80 md:h-80 rounded-full border border-cyan/30 overflow-hidden shadow-[0_0_80px_rgba(0,242,254,0.3)]">
+                <img src="assets/hero_orb.png" alt="Exosome Nanoparticle" class="w-full h-full object-cover mix-blend-screen scale-110">
+            </div>
+        </section>
+
+        <!-- Brand Story Section -->
+        <section id="brand-story" class="py-24 px-6 lg:px-12 border-t border-white/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-900 z-0"></div>
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">About Brand</h2>
+                    <h3 class="gsap-fade text-4xl md:text-5xl font-bold mb-6 text-silver-100">Xepbio. 생명의 숨결을 깨우다</h3>
+                    <p class="gsap-fade text-silver-500 font-light max-w-3xl mx-auto leading-relaxed">
+                        우리의 여정은 버려지는 것에 생명력을 불어넣는 <strong>'업사이클링'</strong>에서 완성됩니다.<br>
+                        메마른 땅에 생명력을 불어넣는 신성한 서풍처럼 질환으로 고통받는 신체에 회복을 전달합니다.
+                    </p>
+                </div>
+                <div class="space-y-12 md:space-y-24">
+                    <div class="gsap-fade flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2 text-right md:pr-10">
+                            <h4 class="text-2xl font-bold text-silver-100 mb-3"><span class="text-cyan font-light uppercase text-sm tracking-widest block mb-2">01 / Zephyrus</span> 서풍 (X): 생명의 바람</h4>
+                            <p class="text-silver-500 font-light leading-relaxed">제주에서 부는 서풍(하늬바람)은 한라산을 넘는 순간 온화한 기운으로 변모합니다. Xepbio의 <strong>‘X’</strong>는 메마른 땅에 생명력을 불어넣는 서풍이자 구원(Christos)의 바람입니다.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 h-64 rounded-3xl bg-navy-800 border border-white/5 relative overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.15)]">
+                            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
+                                <source src="assets/zephyrus.mp4" type="video/mp4">
+                                <img src="assets/zephyrus.png" alt="Zephyrus West Wind" class="absolute inset-0 w-full h-full object-cover">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="gsap-fade flex flex-col md:flex-row-reverse items-center gap-10">
+                        <div class="w-full md:w-1/2 text-left md:pl-10">
+                            <h4 class="text-2xl font-bold text-silver-100 mb-3"><span class="text-cyan font-light uppercase text-sm tracking-widest block mb-2">02 / Wave</span> 파도: 엑소좀의 탄생</h4>
+                            <p class="text-silver-500 font-light leading-relaxed">따뜻한 바람이 불어 물보라가 치는 찰나, 그 속에서 보석 같은 입자가 튀어나옵니다. 우리는 청정 제주 해양 자원에서 가장 순수하고 강력한 나노 입자, <strong>엑소좀(Exosome)</strong>을 추출해 냅니다.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 h-64 rounded-3xl bg-navy-800 border border-white/5 relative overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.15)]">
+                            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
+                                <source src="assets/wave_exosome.mp4" type="video/mp4">
+                                <img src="assets/wave_exosome.png" alt="Ocean Wave Exosome" class="absolute inset-0 w-full h-full object-cover">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="gsap-fade flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2 text-right md:pr-10">
+                            <h4 class="text-2xl font-bold text-silver-100 mb-3"><span class="text-cyan font-light uppercase text-sm tracking-widest block mb-2">03 / Science</span> 바람의 길을 설계하다</h4>
+                            <p class="text-silver-500 font-light leading-relaxed">고성능 GPU 서버를 통한 <strong>In-silico 시뮬레이션</strong>으로 가장 정확한 침투 경로를 계산합니다. 또한 제주 용암해수 미네랄의 <strong>Ionic Shielding</strong> 공법으로 그 길을 안전하게 에스코트합니다.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 h-64 rounded-3xl bg-navy-800 border border-white/5 relative overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.15)]">
+                             <img src="assets/bbb_shuttle.png" alt="Science & Tech" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Key Section -->
+        <section id="the-key" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto border-t border-white/5">
+            <div class="mb-16">
+                <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">01 / The Key</h2>
+                <h3 class="gsap-fade text-3xl md:text-5xl font-bold mb-4">능동적 BBB 투과 셔틀 구조체</h3>
+                <p class="gsap-fade text-silver-500 max-w-2xl font-light">효능 부족이 아닌 도달의 실패. 뇌질환 신약 후보물질의 98%가 부딪히는 그 한계를 우리는 능동형 셔틀 방식으로 허물어냅니다.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <div class="gsap-fade p-8 rounded-3xl bg-navy-800 border border-white/5 hover:border-cyan/30 transition-all group">
+                        <h4 class="text-xl font-bold text-silver-100 mb-2 group-hover:text-cyan transition-colors">1. Mfsd2a 결합 셔틀</h4>
+                        <p class="text-silver-500 font-light text-sm leading-relaxed">뇌혈관장벽(BBB)에 존재하는 핵심영양 수송체(Mfsd2a)와 특이적으로 결합하는 LPC-DHA 나노 구조를 활용하여 약물을 뇌 내부로 완벽히 에스코트합니다.</p>
+                    </div>
+                    <div class="gsap-fade p-8 rounded-3xl bg-navy-800 border border-white/5 hover:border-cyan/30 transition-all group">
+                        <h4 class="text-xl font-bold text-silver-100 mb-2 group-hover:text-cyan transition-colors">2. 천연 미네랄 실딩(Shielding)</h4>
+                        <p class="text-silver-500 font-light text-sm leading-relaxed">제주 용암해수 기반 미네랄 쉴딩 기술로 천연 엑소좀의 조기 유출을 차단합니다. 부형제로 인한 전신 독성을 막고 환자 순응도를 획기적으로 올립니다.</p>
+                    </div>
+                </div>
+                <div class="relative h-96 gsap-float rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.15)] border border-white/10">
+                    <img src="assets/bbb_shuttle.png" alt="BBB Penetration" class="absolute inset-0 w-full h-full object-cover">
+                    <!-- Overlay text -->
+                     <div class="absolute bottom-4 right-6 bg-navy-900/80 backdrop-blur-md px-4 py-2 rounded-lg border border-cyan/30 text-xs text-cyan tracking-wider">
+                        ACTIVE TRANSPORT ➔
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- In-silico Platform Section -->
+        <section id="in-silico" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto border-t border-white/5">
+            <div class="mb-16">
+                <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">02 / In-silico Platform</h2>
+                <h3 class="gsap-fade text-3xl md:text-5xl font-bold mb-4">AI-MD 분자 동역학 디지털 트윈</h3>
+                <p class="gsap-fade text-silver-500 max-w-2xl font-light">젭바이오는 고성능 GPU 클러스터를 활용하여, 약물이 뇌혈관장벽(BBB)을 통과하는 복잡한 물리·화학적 메커니즘을 펨토초(10<sup>-15</sup>초) 단위의 분자 수준에서 가상 시뮬레이션합니다. 이를 통해 파트너사들이 보유한 다양한 약물 후보물질(Cargo)의 침투력을 사전에 검증하고 개발 기간과 비용을 극적으로 단축합니다.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative aspect-video md:aspect-square rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.15)] border border-white/10 order-2 md:order-1">
+                    <img src="assets/md_simulation_preview.png" alt="Molecular Dynamics Simulation" class="absolute inset-0 w-full h-full object-cover">
+                    <!-- Scanning Overlay Line -->
+                    <div class="absolute inset-x-0 h-0.5 bg-cyan/80 shadow-[0_0_15px_#00F2FE] pointer-events-none" style="animation: scan 4s linear infinite;"></div>
+                </div>
+                <div class="space-y-6 order-1 md:order-2">
+                    <div class="gsap-fade p-8 rounded-3xl bg-navy-800 border border-white/5 hover:border-cyan/30 transition-all group">
+                        <h4 class="text-xl font-bold text-silver-100 mb-2 group-hover:text-cyan transition-colors">1. 초고속 GROMACS MD 시뮬레이션</h4>
+                        <p class="text-silver-500 font-light text-sm leading-relaxed">뇌혈관장벽(BBB)을 투과하는 LPC-DHA 셔틀과 Mfsd2a 수송체의 능동 결합 구조를 모델링하여 100ns 이상의 분자 안정성 및 자유에너지 데이터를 정밀 분석합니다.</p>
+                    </div>
+                    <div class="gsap-fade p-8 rounded-3xl bg-navy-800 border border-white/5 hover:border-cyan/30 transition-all group">
+                        <h4 class="text-xl font-bold text-silver-100 mb-2 group-hover:text-cyan transition-colors">2. Ionic Shielding 가상 모델링</h4>
+                        <p class="text-silver-500 font-light text-sm leading-relaxed">제주 용암해수의 천연 미네랄 보호막 형성 과정을 컴퓨터 시뮬레이션으로 예측하여, 환경 스트레스에 따른 엑소좀의 물리적 탄성과 막 투과 메커니즘을 규명합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Section -->
+        <section id="pipeline" class="py-24 px-6 lg:px-12 bg-navy-800 relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 md:w-2/3">
+                    <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">03 / Platform & Business</h2>
+                    <h3 class="gsap-fade text-3xl md:text-5xl font-bold mb-6">압도적 시장 우위 확보</h3>
+                    <p class="gsap-fade text-silver-500 font-light">우리는 자체 신약을 직접 개발하는 리스크를 안지 않습니다. 글로벌 빅파마가 보유한 우수한 뇌질환 치료 물질들을 당사의 BBB 투과 엑소좀에 탑재(Load)하여 전달하는 순수 DDS 플랫폼 라이선싱 비즈니스를 지향합니다.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gsap-fade bg-navy-900 p-8 rounded-3xl border border-white/5 hover:border-silver-500/30 transition-colors">
+                        <div class="text-2xl mb-4 p-3 bg-white/5 inline-block rounded-2xl">⚡</div>
+                        <h4 class="text-lg font-bold mb-3">생산 원가 1/10 혁신</h4>
+                        <p class="text-silver-500 text-sm font-light">인간 유래 세포 배양의 막대한 비용과 50% 수준의 낮은 정제율 병목을 극복. TFF 기반 여과 시스템으로 고수율 대량 정제 체계를 확립했습니다.</p>
+                    </div>
+                    <div class="gsap-fade bg-navy-900 p-8 rounded-3xl border border-white/5 hover:border-silver-500/30 transition-colors">
+                        <div class="text-2xl mb-4 p-3 bg-white/5 inline-block rounded-2xl">❄️</div>
+                        <h4 class="text-lg font-bold mb-3">콜드체인 문제 극복</h4>
+                        <p class="text-silver-500 text-sm font-light">고도의 미네랄 코팅 구조를 통해 기존 엑소좀의 최대 약점이었던 유통상 콜드체인 제약을 극복, 글로벌 확장을 현실화합니다.</p>
+                    </div>
+                    <div class="gsap-fade bg-navy-900 p-8 rounded-3xl border border-white/5 hover:border-silver-500/30 transition-colors md:col-span-2 lg:col-span-1 border-t-cyan/30">
+                        <div class="text-2xl mb-4 p-3 bg-cyan/10 text-cyan inline-block rounded-2xl">🌍</div>
+                        <h4 class="text-lg font-bold mb-3 text-cyan">파트너십 확장</h4>
+                        <p class="text-silver-500 text-sm font-light">글로벌 54억 달러 치매 시장을 겨냥하며 혁신 치료제 탑재체(Carrier) 제공자로 빅파마와의 연구를 긴밀히 추진합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+            <div class="w-full md:w-1/2">
+                <div class="relative aspect-square rounded-3xl border border-cyan/20 overflow-hidden gsap-float shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
+                        <source src="assets/marine_upcycling.mp4" type="video/mp4">
+                        <img src="assets/marine_upcycling.png" alt="Marine Upcycling to DNA" class="absolute inset-0 w-full h-full object-cover">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <span class="esg-video-badge bg-cyan text-navy-900 font-bold text-xs tracking-widest px-3 py-1 rounded-sm">ESG BIO</span>
+                        <h4 class="esg-video-title text-3xl font-black text-white mt-2">UP-CYCLING</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">04 / ESG Impact</h2>
+                <h3 class="gsap-fade text-3xl md:text-5xl font-bold mb-6">폐기물을 생명의 정수로</h3>
+                <p class="gsap-fade text-silver-500 font-light mb-4">참다랑어, 방어 가공 시 발생하는 '어창수'는 매일 수만 톤씩 버려지며 막대한 정화 비용을 초래하는 요인이었습니다.</p>
+                <p class="gsap-fade text-silver-500 font-light border-l-2 border-cyan/50 pl-4 py-2 bg-white/5">우리는 이 버려지는 어창수 내에 막대한 양의 천연 엑소좀이 함유되어 있음을 세계 최초로 규명했습니다. 치명적인 환경 오염원을 인류의 뇌를 치료하는 생명의 자원으로 전환하는 완벽한 ESG 밸류를 실현합니다.</p>
+            </div>
+        </section>
+
+        <!-- Newsroom Section -->
+        <section id="newsroom" class="py-24 px-6 lg:px-12 bg-navy-800 border-t border-white/5">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">05 / Newsroom & R&D</h2>
+                <h3 class="gsap-fade text-3xl font-bold mb-12">세계적 수준의 학술 증명</h3>
+                <div class="grid md:grid-cols-3 gap-6 text-left">
+                    <div class="gsap-fade p-6 border border-white/10 rounded-2xl bg-navy-900">
+                        <span class="text-xs text-silver-500 mb-2 block">Nature Materials (2011)</span>
+                        <h4 class="font-medium text-silver-100 mb-2">바이오-디지털 트윈 기반 네이처 융합 연구 성과 게재</h4>
+                    </div>
+                    <div class="gsap-fade p-6 border border-white/10 rounded-2xl bg-navy-900">
+                        <span class="text-xs text-silver-500 mb-2 block">Kyung Hee Univ.</span>
+                        <h4 class="font-medium text-silver-100 mb-2">경희대 교수진 기술이전 및 연구·품질 관리 체계 확보</h4>
+                    </div>
+                    <div class="gsap-fade p-6 border border-white/10 rounded-2xl bg-navy-900">
+                        <span class="text-xs text-silver-500 mb-2 block">Advanced Materials</span>
+                        <h4 class="font-medium text-silver-100 mb-2">반도체 공정 융합을 통한 전달 플랫폼 관련 세계적 저널 표지 논문 등극</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Agent Section (Orbit) - DISABLED FOR PATENT PROCESS -->
+        <section id="orbit" class="hidden py-24 px-6 lg:px-12 max-w-5xl mx-auto text-center border-t border-white/5">
+            <h2 class="gsap-fade text-sm text-cyan uppercase tracking-widest mb-2">06 / Orbit</h2>
+            <h3 class="gsap-fade text-3xl md:text-5xl font-bold mb-4">젭바이오 Orbit과 대화하기</h3>
+            <p class="gsap-fade text-silver-500 font-light mb-10">당사의 핵심 경쟁력, 시장 타겟, 기술 메커니즘을 상세히 답변해 드리는 IR 특화 에이전트입니다.</p>
+
+            <div class="gsap-fade bg-navy-800 border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.4)] text-left">
+                <!-- Chat View -->
+                <div id="chat-window" class="h-[450px] p-6 lg:p-10 overflow-y-auto space-y-6 flex flex-col bg-navy-900/50">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-cyan border-2 border-navy-900 flex justify-center items-center shrink-0 shadow-[0_0_15px_rgba(0,242,254,0.3)]">
+                            🤖
+                        </div>
+                        <div class="bg-navy-800 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm font-light text-silver-100 leading-relaxed max-w-[85%]">
+                            안녕하세요. 저는 젭바이오의 뇌혈관장벽(BBB) 투과 엑소좀 플랫폼 정보와 IR을 전문적으로 안내하는 AI 에이전트 'Orbit'입니다. <br><br>고비용 엑소좀 한계 극복, Mfsd2a 셔틀 원리, 또는 ESG 환경적 기여 등 궁금하신 내용을 물어보세요.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Input Panel -->
+                <div class="p-6 bg-navy-800 border-t border-white/5">
+                    <form id="orbit-form" class="flex gap-3 relative">
+                        <input type="text" id="orbit-input" placeholder="어창수 재활용이 구체적으로 어떤 의미인가요?" 
+                               class="flex-1 w-full bg-navy-900 border border-white/10 rounded-full px-6 py-4 text-sm text-silver-100 focus:outline-none focus:border-cyan/50 transition-colors placeholder:text-silver-500/50 pr-16"
+                               autocomplete="off">
+                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-cyan text-navy-900 w-10 h-10 rounded-full flex justify-center items-center hover:bg-white hover:scale-110 transition-all font-bold">
+                            ➔
+                        </button>
+                    </form>
+                    <p class="text-[0.6rem] text-center text-silver-500/40 mt-3">* Gemini 1.5 Flash 모델 기반 보안 라우팅 시스템 적용 중</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 px-6 bg-navy-900 border-t border-white/5 text-center text-xs text-silver-500/50">
+            <p>&copy; 2026 Xepbio (젭바이오). All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js?v=4.0"></script>
+</body>
+</html>
